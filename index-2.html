@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Получите бесплатные английские коллокации | Speaking Booster</title>
+    <meta name="description" content="Скачайте бесплатный материал с полезными разговорными коллокациями английского языка">
+    
+    <!-- International Telephone Input CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@19.5.6/build/css/intlTelInput.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Hero Section -->
+        <header class="hero">
+            <div class="badge">Free Resource</div>
+            <h1 class="hero-title">
+                Improve Your English with<br>
+                <span class="highlight">100+ Collocations</span>
+            </h1>
+            <p class="hero-description">
+                Unlock natural, fluent English with curated collocations used by native speakers every day. Perfect for intermediate to advanced learners.
+            </p>
+            
+            <!-- Benefits -->
+            <div class="benefits">
+                <div class="benefit-item">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                    <span>Boost fluency instantly</span>
+                </div>
+                <div class="benefit-item">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                    <span>Sound more natural</span>
+                </div>
+                <div class="benefit-item">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                    <span>Easy to apply</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Form Section -->
+        <section class="form-section">
+            <div class="form-container">
+                <h2 class="form-title">Get Instant Access</h2>
+                <p class="form-subtitle">Enter your details below to receive your free guide</p>
+                
+                <form id="leadForm" class="lead-form" novalidate>
+                    <!-- Honeypot field for spam protection (hidden) -->
+                    <input type="text" name="website" id="website" class="honeypot" tabindex="-1" autocomplete="off">
+                    
+                    <!-- Name Field -->
+                    <div class="form-group">
+                        <label for="name" class="form-label">Your Name</label>
+                        <input 
+                            type="text" 
+                            id="name" 
+                            name="name" 
+                            class="form-input" 
+                            placeholder="Anna Smith"
+                            required
+                            autocomplete="name"
+                        >
+                        <span class="error-message" id="nameError"></span>
+                    </div>
+
+                    <!-- Email Field -->
+                    <div class="form-group">
+                        <label for="email" class="form-label">Email Address</label>
+                        <input 
+                            type="email" 
+                            id="email" 
+                            name="email" 
+                            class="form-input" 
+                            placeholder="anna@example.com"
+                            required
+                            autocomplete="email"
+                        >
+                        <span class="error-message" id="emailError"></span>
+                    </div>
+
+                    <!-- Phone Field with International Input -->
+                    <div class="form-group">
+                        <label for="phone" class="form-label">Phone Number</label>
+                        <input 
+                            type="tel" 
+                            id="phone" 
+                            name="phone" 
+                            class="form-input" 
+                            placeholder="+1 234 567 8900"
+                            required
+                            autocomplete="tel"
+                        >
+                        <span class="error-message" id="phoneError"></span>
+                    </div>
+
+                    <!-- Privacy Notice -->
+                    <div class="privacy-notice">
+                        <svg class="lock-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="5" y="11" width="14" height="10" rx="2" ry="2"></rect>
+                            <path d="M7 11V7a5 5 0 0110 0v4"></path>
+                        </svg>
+                        <p>Я не передаю ваши данные третьим лицам. Ваша информация защищена и используется только для отправки образовательных материалов.</p>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="submit-btn" id="submitBtn">
+                        <span class="btn-text">Получить бесплатный доступ</span>
+                        <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </button>
+
+                    <!-- Loading State -->
+                    <div class="loading-state" id="loadingState" style="display: none;">
+                        <div class="spinner"></div>
+                        <p>Preparing your materials...</p>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- Success Message (hidden by default) -->
+        <div class="success-modal" id="successModal" style="display: none;">
+            <div class="success-content">
+                <div class="success-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                </div>
+                <h3 class="success-title">Success! Your materials are ready</h3>
+                <p class="success-message">You're being redirected to your free English collocations guide...</p>
+                <div class="redirect-timer">
+                    <div class="timer-bar"></div>
+                </div>
+                <a href="https://www.notion.so/English-collocations-katya-proeng-284ecf12da6e80d2a797cb7b92229792" 
+                   class="manual-link" 
+                   id="manualLink">
+                   Or click here to access now →
+                </a>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p class="footer-text">
+                Created with ❤️ by Katya | English Teacher & Speaking Coach
+            </p>
+            <p class="footer-subtext">
+                Join <strong>Speaking Booster Community</strong> for more resources
+            </p>
+        </footer>
+    </div>
+
+    <!-- International Telephone Input JS -->
+    <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@19.5.6/build/js/intlTelInput.min.js"></script>
+    
+    <!-- Main JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
